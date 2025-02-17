@@ -337,6 +337,7 @@ const message = {
         firewall: 'Firewall',
         ssl: 'Certificate | Certificates',
         database: 'Database | Databases',
+        ai_tools: 'AI',
         container: 'Container | Containers',
         cronjob: 'Cron Job | Cron Jobs',
         host: 'Host | Hosts',
@@ -602,6 +603,53 @@ const message = {
         remoteConnHelper2:
             'Alamat sambungan ini boleh digunakan oleh aplikasi yang berjalan di luar kontena atau aplikasi luaran.',
         localIP: 'IP Tempatan',
+    },
+    ai_tools: {
+        model: {
+            model: 'Model',
+            create: 'Tambah Model',
+            create_helper: 'Tarik "{0}" dari Ollama.com',
+            ollama_doc: 'Anda boleh melawat laman web rasmi Ollama untuk mencari dan menemui lebih banyak model.',
+            container_conn_helper: 'Gunakan alamat ini untuk akses atau sambungan antara kontena',
+        },
+        gpu: {
+            gpu: 'Monitor GPU',
+            base: 'Maklumat Asas',
+            gpuHelper: 'Perintah NVIDIA-SMI atau XPU-SMI tidak dikesan pada sistem semasa. Sila periksa dan cuba lagi!',
+            driverVersion: 'Versi Pemacu',
+            cudaVersion: 'Versi CUDA',
+            process: 'Maklumat Proses',
+            type: 'Jenis',
+            typeG: 'Grafik',
+            typeC: 'Pengiraan',
+            typeCG: 'Pengiraan + Grafik',
+            processName: 'Nama Proses',
+            processMemoryUsage: 'Penggunaan Memori',
+            temperatureHelper: 'Suhu GPU yang tinggi boleh menyebabkan pelambatan frekuensi GPU',
+            performanceStateHelper: 'Dari P0 (prestasi maksimum) hingga P12 (prestasi minimum)',
+            busID: 'ID Bas',
+            persistenceMode: 'Mod Ketekalan',
+            enabled: 'Diaktifkan',
+            disabled: 'Dilumpuhkan',
+            persistenceModeHelper:
+                'Mod ketekalan membolehkan respons tugas lebih cepat tetapi meningkatkan penggunaan kuasa sedia.',
+            displayActive: 'Kad Grafik Dimulakan',
+            displayActiveT: 'Ya',
+            displayActiveF: 'Tidak',
+            ecc: 'Teknologi Pemeriksaan dan Pembetulan Ralat',
+            computeMode: 'Mod Pengiraan',
+            default: 'Asal',
+            exclusiveProcess: 'Proses Eksklusif',
+            exclusiveThread: 'Thread Eksklusif',
+            prohibited: 'Dilarang',
+            defaultHelper: 'Asal: Proses boleh dilaksanakan secara serentak',
+            exclusiveProcessHelper:
+                'Proses Eksklusif: Hanya satu konteks CUDA boleh menggunakan GPU, tetapi boleh dikongsi oleh berbilang thread',
+            exclusiveThreadHelper: 'Thread Eksklusif: Hanya satu thread dalam konteks CUDA boleh menggunakan GPU',
+            prohibitedHelper: 'Dilarang: Proses tidak dibenarkan dilaksanakan serentak',
+            migModeHelper: 'Digunakan untuk membuat contoh MIG bagi pengasingan fizikal GPU pada tahap pengguna.',
+            migModeNA: 'Tidak Disokong',
+        },
     },
     container: {
         create: 'Cipta kontena',
@@ -1346,6 +1394,7 @@ const message = {
         existFileTitle: 'Amaran fail dengan nama yang sama',
         existFileHelper: 'Fail yang dimuat naik mengandungi fail dengan nama yang sama. Adakah anda mahu menimpanya?',
         existFileSize: 'Saiz fail (baru -> lama)',
+        existFileDirHelper: 'Fail/folder yang dipilih mempunyai nama yang sama. Sila berhati-hati!',
     },
     ssh: {
         setting: 'tetapan',
@@ -1777,7 +1826,6 @@ const message = {
         introduce: 'Pengenalan Ciri',
         waf: 'Menaik taraf ke versi profesional boleh menyediakan ciri seperti peta pencegahan, log, rekod blok, sekatan lokasi geografi, peraturan tersuai, halaman pencegahan tersuai, dan sebagainya.',
         tamper: 'Menaik taraf ke versi profesional boleh melindungi laman web daripada pengubahsuaian atau manipulasi tanpa kebenaran.',
-        gpu: 'Menaik taraf ke versi profesional boleh membantu pengguna memantau parameter penting GPU secara visual seperti beban kerja, suhu, penggunaan memori secara masa nyata.',
         setting:
             'Menaik taraf ke versi profesional membolehkan penyesuaian logo panel, mesej selamat datang, dan maklumat lain.',
         monitor:
@@ -1951,6 +1999,9 @@ const message = {
         diffHelper: 'Bahagian kiri ialah versi lama, kanan ialah versi baru.',
         pullImage: 'Tarik Imej',
         pullImageHelper: 'Laksanakan docker pull untuk menarik imej sebelum aplikasi dimulakan.',
+        gpuConfig: 'Pecutan GPU',
+        gpuConfigHelper:
+            'Pastikan mesin mempunyai GPU NVIDIA dan pasang pemacu NVIDIA serta NVIDIA Docker Container Toolkit.',
     },
     website: {
         website: 'Laman Web | Laman Web',
@@ -2556,6 +2607,13 @@ const message = {
         cronJobHelper: 'Hantar amaran SMS apabila pelaksanaan tugas gagal',
         licenseHelper: 'Versi profesional menyokong amaran SMS',
         alertCountHelper: 'Kekerapan maksimum amaran harian',
+    },
+    aitool: {
+        proxy: 'Peningkatan Proksi AI',
+        proxyHelper1: 'Ikatkan domain dan aktifkan HTTPS untuk meningkatkan keselamatan penghantaran',
+        proxyHelper2: 'Hadkan akses IP untuk mengelakkan pendedahan di internet awam',
+        proxyHelper3: 'Aktifkan penstriman',
+        proxyHelper4: 'Setelah selesai, anda boleh melihat dan mengurusnya dalam senarai laman web',
     },
 };
 

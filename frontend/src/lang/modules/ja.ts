@@ -330,6 +330,7 @@ const message = {
         firewall: 'ファイアウォール',
         ssl: '証明書|証明書',
         database: 'データベース|データベース',
+        ai_tools: 'AI',
         container: 'コンテナ|コンテナ',
         cronjob: 'クロンジョブ|クロンの仕事',
         host: 'ホスト|ホスト',
@@ -591,6 +592,53 @@ const message = {
         remoteConnHelper2:
             'この接続アドレスは、非コンテナまたは外部アプリケーションで実行されているアプリケーションで使用できます。',
         localIP: 'ローカルIP',
+    },
+    ai_tools: {
+        model: {
+            model: 'モデル',
+            create: 'モデルを追加',
+            create_helper: 'Ollama.com から "{0}" を取得',
+            ollama_doc: 'Ollama の公式ウェブサイトを訪れて、さらに多くのモデルを検索して見つけることができます。',
+            container_conn_helper: 'コンテナ間のアクセスまたは接続にこのアドレスを使用',
+        },
+        gpu: {
+            gpu: 'GPUモニター',
+            base: '基本情報',
+            gpuHelper:
+                '現在のシステムでNVIDIA-SMIまたはXPU-SMIコマンドが検出されませんでした。確認して再試行してください！',
+            driverVersion: 'ドライバーバージョン',
+            cudaVersion: 'CUDAバージョン',
+            process: 'プロセス情報',
+            type: 'タイプ',
+            typeG: 'グラフィックス',
+            typeC: 'コンピュート',
+            typeCG: 'コンピュート + グラフィックス',
+            processName: 'プロセス名',
+            processMemoryUsage: 'メモリ使用量',
+            temperatureHelper: '高いGPU温度はGPUの周波数制限を引き起こす可能性があります',
+            performanceStateHelper: 'P0（最大性能）からP12（最小性能）まで',
+            busID: 'バスID',
+            persistenceMode: '永続モード',
+            enabled: '有効',
+            disabled: '無効',
+            persistenceModeHelper: '永続モードはタスクの応答速度を速くしますが、待機時の消費電力が増加します。',
+            displayActive: 'グラフィックカード初期化済み',
+            displayActiveT: 'はい',
+            displayActiveF: 'いいえ',
+            ecc: 'エラー訂正およびチェック技術',
+            computeMode: 'コンピュートモード',
+            default: 'デフォルト',
+            exclusiveProcess: '専用プロセス',
+            exclusiveThread: '専用スレッド',
+            prohibited: '禁止',
+            defaultHelper: 'デフォルト：プロセスは並行して実行できます',
+            exclusiveProcessHelper:
+                '専用プロセス：1つのCUDAコンテキストのみがGPUを使用できますが、複数のスレッドで共有できます',
+            exclusiveThreadHelper: '専用スレッド：CUDAコンテキスト内の1つのスレッドのみがGPUを使用できます',
+            prohibitedHelper: '禁止：プロセスは同時に実行できません',
+            migModeHelper: 'ユーザーレベルでGPUの物理的分離を行うためのMIGインスタンスを作成するために使用されます。',
+            migModeNA: 'サポートされていません',
+        },
     },
     container: {
         create: 'コンテナを作成します',
@@ -1304,6 +1352,7 @@ const message = {
         existFileTitle: '同名ファイルの警告',
         existFileHelper: 'アップロードしたファイルに同じ名前のファイルが含まれています。上書きしますか？',
         existFileSize: 'ファイルサイズ（新しい -> 古い）',
+        existFileDirHelper: '選択したファイル/フォルダーには同じ名前のものが既に存在します。慎重に操作してください！',
     },
     ssh: {
         setting: '設定',
@@ -1722,7 +1771,6 @@ const message = {
         introduce: '機能の紹介',
         waf: 'プロフェッショナルバージョンにアップグレードすると、インターセプトマップ、ログ、ブロックレコード、地理的位置ブロッキング、カスタムルール、カスタムインターセプトページなどの機能を提供できます。',
         tamper: 'プロのバージョンにアップグレードすると、不正な変更や改ざんからWebサイトを保護できます。',
-        gpu: 'プロのバージョンにアップグレードすることで、ユーザーはワークロード、温度、メモリ使用量などのGPUの重要なパラメーターをリアルタイムで視覚的に監視するのに役立ちます。',
         setting:
             'プロのバージョンにアップグレードすることで、パネルロゴ、ウェルカムメッセージ、その他の情報のカスタマイズが可能になります。',
         monitor:
@@ -1900,6 +1948,9 @@ const message = {
             '左側は古いバージョンで、右側は新しいバージョンです。編集後、クリックしてカスタムバージョンを保存します',
         pullImage: '画像を引っ張ります',
         pullImageHelper: 'アプリケーションが開始する前に、Docker Pullを実行して画像をプルします',
+        gpuConfig: 'GPU アクセラレーション',
+        gpuConfigHelper:
+            'マシンにNVIDIA GPUが搭載されていることを確認し、NVIDIAドライバーとNVIDIA Docker Container Toolkitをインストールしてください。',
     },
     website: {
         website: 'ウェブサイト|ウェブサイト',
@@ -2496,6 +2547,13 @@ const message = {
         cronJobHelper: 'タスクの実行が失敗したときにSMSアラートをトリガーします',
         licenseHelper: 'プロのバージョンはSMSアラートをサポートします',
         alertCountHelper: '最大毎日のアラーム周波数',
+    },
+    aitool: {
+        proxy: 'AI プロキシ強化',
+        proxyHelper1: 'ドメインをバインドし、HTTPS を有効にして通信のセキュリティを強化',
+        proxyHelper2: 'IP アクセスを制限し、パブリックインターネットでの露出を防止',
+        proxyHelper3: 'ストリーミングを有効にする',
+        proxyHelper4: '作成後、ウェブサイトリストで確認および管理できます',
     },
 };
 export default {

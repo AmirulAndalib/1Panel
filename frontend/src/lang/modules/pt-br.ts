@@ -335,6 +335,7 @@ const message = {
         firewall: 'Firewall',
         ssl: 'Certificado | Certificados',
         database: 'Banco de Dados | Bancos de Dados',
+        ai_tools: 'AI',
         container: 'Container | Containers',
         cronjob: 'Tarefa Cron | Tarefas Cron',
         host: 'Host | Hosts',
@@ -599,6 +600,54 @@ const message = {
         remoteConnHelper2:
             'Este endereço de conexão pode ser utilizado por aplicações que estão fora do contêiner ou por aplicações externas.',
         localIP: 'IP local',
+    },
+    ai_tools: {
+        model: {
+            model: 'Modelo',
+            create: 'Adicionar Modelo',
+            create_helper: 'Puxar "{0}" do Ollama.com',
+            ollama_doc: 'Você pode visitar o site oficial da Ollama para pesquisar e encontrar mais modelos.',
+            container_conn_helper: 'Use este endereço para acesso ou conexão entre contêineres',
+        },
+        gpu: {
+            gpu: 'Monitor de GPU',
+            base: 'Informações Básicas',
+            gpuHelper:
+                'Comando NVIDIA-SMI ou XPU-SMI não detectado no sistema atual. Por favor, verifique e tente novamente!',
+            driverVersion: 'Versão do Driver',
+            cudaVersion: 'Versão do CUDA',
+            process: 'Informações do Processo',
+            type: 'Tipo',
+            typeG: 'Gráficos',
+            typeC: 'Cálculo',
+            typeCG: 'Cálculo + Gráficos',
+            processName: 'Nome do Processo',
+            processMemoryUsage: 'Uso de Memória',
+            temperatureHelper: 'Temperaturas altas da GPU podem causar limitação de frequência da GPU.',
+            performanceStateHelper: 'De P0 (máximo desempenho) a P12 (mínimo desempenho).',
+            busID: 'ID do Barramento',
+            persistenceMode: 'Modo de Persistência',
+            enabled: 'Ativado',
+            disabled: 'Desativado',
+            persistenceModeHelper:
+                'O modo de persistência permite respostas mais rápidas às tarefas, mas aumenta o consumo de energia em standby.',
+            displayActive: 'Placa Gráfica Inicializada',
+            displayActiveT: 'Sim',
+            displayActiveF: 'Não',
+            ecc: 'Tecnologia de Correção e Verificação de Erros',
+            computeMode: 'Modo de Cálculo',
+            default: 'Padrão',
+            exclusiveProcess: 'Processo Exclusivo',
+            exclusiveThread: 'Thread Exclusivo',
+            prohibited: 'Proibido',
+            defaultHelper: 'Padrão: Processos podem ser executados simultaneamente.',
+            exclusiveProcessHelper:
+                'Processo Exclusivo: Apenas um contexto CUDA pode usar a GPU, mas pode ser compartilhado por múltiplas threads.',
+            exclusiveThreadHelper: 'Thread Exclusivo: Apenas uma thread em um contexto CUDA pode usar a GPU.',
+            prohibitedHelper: 'Proibido: Não é permitido que processos sejam executados simultaneamente.',
+            migModeHelper: 'Usado para criar instâncias MIG para isolamento físico da GPU no nível do usuário.',
+            migModeNA: 'Não Suportado',
+        },
     },
     container: {
         create: 'Criar contêiner',
@@ -1332,6 +1381,7 @@ const message = {
         existFileTitle: 'Aviso de arquivo com o mesmo nome',
         existFileHelper: 'O arquivo enviado contém um arquivo com o mesmo nome. Deseja substituí-lo?',
         existFileSize: 'Tamanho do arquivo (novo -> antigo)',
+        existFileDirHelper: 'O arquivo/pasta selecionado tem um nome duplicado. Por favor, prossiga com cautela!',
     },
     ssh: {
         setting: 'configuração',
@@ -1763,7 +1813,6 @@ const message = {
         introduce: 'Introdução de recursos',
         waf: 'O upgrade para a versão profissional pode fornecer recursos como mapa de intercepção, logs, registros de bloqueio, bloqueio por localização geográfica, regras personalizadas, páginas de intercepção personalizadas, etc.',
         tamper: 'O upgrade para a versão profissional pode proteger sites contra modificações ou adulterações não autorizadas.',
-        gpu: 'O upgrade para a versão profissional pode ajudar os usuários a monitorar visualmente parâmetros importantes da GPU, como carga de trabalho, temperatura e uso de memória em tempo real.',
         setting:
             'O upgrade para a versão profissional permite a personalização do logo do painel, mensagem de boas-vindas e outras informações.',
         monitor:
@@ -1941,6 +1990,9 @@ const message = {
             'O lado esquerdo é a versão antiga, o lado direito é a nova versão. Após editar, clique para salvar a versão personalizada',
         pullImage: 'Puxar Imagem',
         pullImageHelper: 'Execute o comando docker pull para puxar a imagem antes de iniciar o aplicativo',
+        gpuConfig: 'Aceleração de GPU',
+        gpuConfigHelper:
+            'Certifique-se de que a máquina possui uma GPU NVIDIA e instale os drivers NVIDIA e o NVIDIA Docker Container Toolkit.',
     },
     website: {
         website: 'Website | Websites',
@@ -2549,6 +2601,13 @@ const message = {
         cronJobHelper: 'Dispara alerta via SMS ao falhar na execução de tarefas',
         licenseHelper: 'A versão profissional suporta alertas via SMS',
         alertCountHelper: 'Frequência máxima diária de alertas',
+    },
+    aitool: {
+        proxy: 'Melhoria de Proxy AI',
+        proxyHelper1: 'Vincule o domínio e habilite o HTTPS para aumentar a segurança na transmissão',
+        proxyHelper2: 'Limite o acesso por IP para evitar exposição na internet pública',
+        proxyHelper3: 'Habilite a transmissão em fluxo',
+        proxyHelper4: 'Após a criação, você pode visualizar e gerenciar no lista de sites',
     },
 };
 
