@@ -281,3 +281,11 @@ UserInfoPassHelp: "ヒント：パスワードを変更するには、コマン�
 DBConnErr: "エラー：データベース接続の初期化に失敗しました、{{.err}}"
 SystemVersion: "バージョン："
 SystemMode: "モード："
+
+#ai-tool
+ErrOpenrestyInstall: 'まず Openresty をインストールしてください'
+
+#mobile app
+ErrVerifyToken: 'トークンの検証エラーです。リセット後、再度QRコードをスキャンしてください。'
+ErrInvalidToken: '無効なトークンです。リセット後、再度QRコードをスキャンしてください。'
+ErrExpiredToken: 'トークンの有効期限が切れました。リセット後、再度QRコードをスキャンしてください。'

@@ -15,6 +15,7 @@ const message = {
         fit2cloud: 'FIT2CLOUD',
         lingxia: 'Lingxia',
         button: {
+            run: 'Run',
             create: 'Create ',
             add: 'Add ',
             save: 'Save ',
@@ -122,6 +123,8 @@ const message = {
         },
         msg: {
             noneData: 'No data available',
+            disConn:
+                'Please click the disconnect button directly to terminate the terminal connection, avoiding the use of exit commands like {0}.',
             delete: `This operation delete can't be undone. Do you want to continue?`,
             clean: `This operation clean can't be undone. Do you want to continue?`,
             deleteTitle: 'Delete',
@@ -225,7 +228,7 @@ const message = {
                 'This field must consist of English, numbers, ".", "-", and "_" characters with a length of 2-30.',
             paramComplexity: `This field mustn't start and end with special characters and must consist of English, numbers, "{0}" characters with a length of 6-128.`,
             paramUrlAndPort: 'This field must be in the format of "http(s)://(domain name/ip):(port)".',
-            nginxDoc: 'This field must consist of English, numbers and "." characters.',
+            nginxDoc: 'This field must consist of English, numbers, _ and "." characters.',
             appName: 'Supports lowercase letters, numbers, -, and _, length 2-30, and cannot start or end with - or _',
             containerName: 'Supports letters, numbers, -, _ and .; cannot start with - _ or .; length: 2-128',
             mirror: 'The mirror acceleration address should start with http(s)://, support English letters (both uppercase and lowercase), numbers, . / and -, and should not contain blank lines.',
@@ -330,6 +333,7 @@ const message = {
         firewall: 'Firewall',
         ssl: 'Certificate | Certificates',
         database: 'Database | Databases',
+        ai_tools: 'AI',
         container: 'Container | Containers',
         cronjob: 'Cron Job | Cron Jobs',
         host: 'Host | Hosts',
@@ -591,6 +595,56 @@ const message = {
         remoteConnHelper2:
             'This connnection address can be used by applications running on non-container or external applications.',
         localIP: 'Local IP',
+    },
+    ai_tools: {
+        model: {
+            model: 'Model',
+            create: 'Add Model',
+            create_helper: 'Pull "{0}" from Ollama.com',
+            ollama_doc: 'You can visit the Ollama official website to search and find more models.',
+            container_conn_helper: 'Use this address for inter-container access or connection',
+            ollama_sync: 'Syncing Ollama model found the following models do not exist, do you want to delete them?',
+            from_remote: 'This model was not downloaded via 1Panel, no related pull logs.',
+            no_logs: 'The pull logs for this model have been deleted and cannot be viewed.',
+        },
+        gpu: {
+            gpu: 'GPU Monitor',
+            base: 'Basic Information',
+            gpuHelper: 'NVIDIA-SMI or XPU-SMI command not detected on the current system. Please check and try again!',
+            driverVersion: 'Driver Version',
+            cudaVersion: 'CUDA Version',
+            process: 'Process Information',
+            type: 'Type',
+            typeG: 'Graphics',
+            typeC: 'Compute',
+            typeCG: 'Compute + Graphics',
+            processName: 'Process Name',
+            processMemoryUsage: 'Memory Usage',
+            temperatureHelper: 'High GPU temperature can cause GPU frequency throttling',
+            performanceStateHelper: 'From P0 (maximum performance) to P12 (minimum performance)',
+            busID: 'Bus ID',
+            persistenceMode: 'Persistence Mode',
+            enabled: 'Enabled',
+            disabled: 'Disabled',
+            persistenceModeHelper:
+                'Persistence mode allows quicker task responses but increases standby power consumption.',
+            displayActive: 'Graphics Card Initialized',
+            displayActiveT: 'Yes',
+            displayActiveF: 'No',
+            ecc: 'Error Correction and Check Technology',
+            computeMode: 'Compute Mode',
+            default: 'Default',
+            exclusiveProcess: 'Exclusive Process',
+            exclusiveThread: 'Exclusive Thread',
+            prohibited: 'Prohibited',
+            defaultHelper: 'Default: Processes can execute concurrently',
+            exclusiveProcessHelper:
+                'Exclusive Process: Only one CUDA context can use the GPU, but can be shared by multiple threads',
+            exclusiveThreadHelper: 'Exclusive Thread: Only one thread in a CUDA context can use the GPU',
+            prohibitedHelper: 'Prohibited: Processes are not allowed to execute simultaneously',
+            migModeHelper: 'Used to create MIG instances for physical isolation of the GPU at the user level.',
+            migModeNA: 'Not Supported',
+        },
     },
     container: {
         create: 'Create container',
@@ -1178,6 +1232,7 @@ const message = {
         resource: 'Resource',
         operate: 'Operate',
         detail: {
+            ai: 'AI',
             groups: 'Group',
             hosts: 'Host',
             apps: 'App',
@@ -1326,6 +1381,7 @@ const message = {
         existFileTitle: 'Same name file prompt',
         existFileHelper: 'The uploaded file contains a file with the same name, do you want to overwrite it?',
         existFileSize: 'File size (new -> old)',
+        existFileDirHelper: 'The selected file/folder has a duplicate name. Please proceed with caution!',
     },
     ssh: {
         setting: 'Setting',
@@ -1434,8 +1490,9 @@ const message = {
         proxyDockerHelper:
             'Synchronize proxy server configuration to Docker, support offline server image pulling and other operations',
         apiInterface: 'Enable API',
-        apiInterfaceClose: 'Once closed, API interfaces cannot be accessed. Do you want to continue?',
-        apiInterfaceHelper: 'Allow third-party applications to access the API.',
+        apiInterfaceClose:
+            'API interfaces are unavailable, app functionality will be restricted. Do you want to continue?',
+        apiInterfaceHelper: 'Supports panel API interface access (this feature needs to be enabled for the panel app)',
         apiInterfaceAlert1: `Don't enable it in production environments because it may increase server security risks.`,
         apiInterfaceAlert2: `Don't use third-party applications to call the API to prevent potential security threats.`,
         apiInterfaceAlert3: 'API Docs',
@@ -1745,16 +1802,16 @@ const message = {
         levelUpPro: 'Upgrade to Pro',
         licenseSync: 'License Sync',
         knowMorePro: 'Learn More',
-        closeAlert: 'The current page can be closed in the panel settings',
+        closeAlert: 'The current page can be hidden in the panel settings',
         introduce: 'Feature Introduction',
         waf: 'Upgrading to the professional version can provide features such as interception map, logs, block records, geographical location blocking, custom rules, custom interception pages, etc.',
         tamper: 'Upgrading to the professional version can protect websites from unauthorized modifications or tampering.',
-        gpu: 'Upgrading to the professional version can help users visually monitor important parameters of GPU such as workload, temperature, memory usage in real time.',
         setting:
             'Upgrading to the professional version allows customization of panel logo, welcome message, and other information.',
         monitor:
             'Upgrade to the professional version to view the real-time status of the website, visitor trends, visitor sources, request logs and other information. ',
         alert: 'Upgrade to the professional version to receive alarm information via SMS and view alarm logs, fully control various key events, and ensure worry-free system operation',
+        app: 'Upgrade to the professional version to manage servers and view monitoring features via the mobile app.',
     },
     clean: {
         scan: 'Start scanning',
@@ -1927,6 +1984,8 @@ const message = {
             'The left side is the old version, the right side is the new version. After editing, click to save the custom version',
         pullImage: 'Pull Image',
         pullImageHelper: 'Execute docker pull to pull the image before the application starts',
+        gpuConfig: 'GPU Acceleration',
+        gpuConfigHelper: 'Please ensure that the server has NVIDIA drivers and NVIDIA Container Toolkit installed',
     },
     website: {
         website: 'Website | Websites',
@@ -2528,6 +2587,17 @@ const message = {
         cronJobHelper: 'Trigger SMS alert when task execution fails',
         licenseHelper: 'Professional version supports SMS alert',
         alertCountHelper: 'Maximum daily alarm frequency',
+    },
+    aitool: {
+        proxy: 'AI Proxy Enhancement',
+        proxyHelper1: 'Bind domain and enable HTTPS for enhanced transmission security',
+        proxyHelper2: 'Limit IP access to prevent exposure on the public internet',
+        proxyHelper3: 'Enable streaming',
+        proxyHelper4: 'Once created, you can view and manage it in the website list',
+        proxyHelper5:
+            'After enabling, you can disable external access to the port in the App Store - Installed - Ollama - Parameters to improve security.',
+        proxyHelper6: 'To disable proxy configuration, you can delete it from the website list.',
+        whiteListHelper: 'Restrict access to only IPs in the whitelist',
     },
 };
 

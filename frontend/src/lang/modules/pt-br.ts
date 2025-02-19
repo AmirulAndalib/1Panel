@@ -15,6 +15,7 @@ const message = {
         fit2cloud: 'FIT2CLOUD',
         lingxia: 'Lingxia',
         button: {
+            run: 'Executar',
             create: 'Criar',
             add: 'Adicionar',
             save: 'Salvar',
@@ -122,6 +123,8 @@ const message = {
         },
         msg: {
             noneData: 'Nenhum dado disponível',
+            disConn:
+                'Por favor, clique diretamente no botão de desconexão para encerrar a conexão do terminal, evitando o uso de comandos de saída como {0}.',
             delete: 'Esta operação de exclusão não pode ser desfeita. Deseja continuar?',
             clean: 'Esta operação de limpeza não pode ser desfeita. Deseja continuar?',
             deleteTitle: 'Excluir',
@@ -228,7 +231,7 @@ const message = {
             paramComplexity:
                 'Este campo não deve começar ou terminar com caracteres especiais e deve conter letras, números e "{0}" com comprimento de 6-128.',
             paramUrlAndPort: 'Este campo deve estar no formato "http(s)://(nome do domínio/IP):(porta)".',
-            nginxDoc: 'Este campo deve conter letras, números e ".".',
+            nginxDoc: 'Este campo deve conter letras, _, números e ".".',
             appName:
                 'Suporta letras minúsculas, números, - e _, comprimento de 2 a 30, e não pode começar ou terminar com - ou _',
             containerName:
@@ -335,6 +338,7 @@ const message = {
         firewall: 'Firewall',
         ssl: 'Certificado | Certificados',
         database: 'Banco de Dados | Bancos de Dados',
+        ai_tools: 'AI',
         container: 'Container | Containers',
         cronjob: 'Tarefa Cron | Tarefas Cron',
         host: 'Host | Hosts',
@@ -599,6 +603,58 @@ const message = {
         remoteConnHelper2:
             'Este endereço de conexão pode ser utilizado por aplicações que estão fora do contêiner ou por aplicações externas.',
         localIP: 'IP local',
+    },
+    ai_tools: {
+        model: {
+            model: 'Modelo',
+            create: 'Adicionar Modelo',
+            create_helper: 'Puxar "{0}" do Ollama.com',
+            ollama_doc: 'Você pode visitar o site oficial da Ollama para pesquisar e encontrar mais modelos.',
+            container_conn_helper: 'Use este endereço para acesso ou conexão entre contêineres',
+            ollama_sync:
+                'Menyelaraskan model Ollama mendapati model berikut tidak wujud, adakah anda ingin memadamnya?',
+            from_remote: 'Model ini tidak dimuat turun melalui 1Panel, tiada log pengambilan berkaitan.',
+            no_logs: 'Log pengambilan untuk model ini telah dipadam dan tidak dapat dilihat.',
+        },
+        gpu: {
+            gpu: 'Monitor de GPU',
+            base: 'Informações Básicas',
+            gpuHelper:
+                'Comando NVIDIA-SMI ou XPU-SMI não detectado no sistema atual. Por favor, verifique e tente novamente!',
+            driverVersion: 'Versão do Driver',
+            cudaVersion: 'Versão do CUDA',
+            process: 'Informações do Processo',
+            type: 'Tipo',
+            typeG: 'Gráficos',
+            typeC: 'Cálculo',
+            typeCG: 'Cálculo + Gráficos',
+            processName: 'Nome do Processo',
+            processMemoryUsage: 'Uso de Memória',
+            temperatureHelper: 'Temperaturas altas da GPU podem causar limitação de frequência da GPU.',
+            performanceStateHelper: 'De P0 (máximo desempenho) a P12 (mínimo desempenho).',
+            busID: 'ID do Barramento',
+            persistenceMode: 'Modo de Persistência',
+            enabled: 'Ativado',
+            disabled: 'Desativado',
+            persistenceModeHelper:
+                'O modo de persistência permite respostas mais rápidas às tarefas, mas aumenta o consumo de energia em standby.',
+            displayActive: 'Placa Gráfica Inicializada',
+            displayActiveT: 'Sim',
+            displayActiveF: 'Não',
+            ecc: 'Tecnologia de Correção e Verificação de Erros',
+            computeMode: 'Modo de Cálculo',
+            default: 'Padrão',
+            exclusiveProcess: 'Processo Exclusivo',
+            exclusiveThread: 'Thread Exclusivo',
+            prohibited: 'Proibido',
+            defaultHelper: 'Padrão: Processos podem ser executados simultaneamente.',
+            exclusiveProcessHelper:
+                'Processo Exclusivo: Apenas um contexto CUDA pode usar a GPU, mas pode ser compartilhado por múltiplas threads.',
+            exclusiveThreadHelper: 'Thread Exclusivo: Apenas uma thread em um contexto CUDA pode usar a GPU.',
+            prohibitedHelper: 'Proibido: Não é permitido que processos sejam executados simultaneamente.',
+            migModeHelper: 'Usado para criar instâncias MIG para isolamento físico da GPU no nível do usuário.',
+            migModeNA: 'Não Suportado',
+        },
     },
     container: {
         create: 'Criar contêiner',
@@ -1183,6 +1239,7 @@ const message = {
         resource: 'Recurso',
         operate: 'Operar',
         detail: {
+            ai: 'AI',
             groups: 'Grupo',
             hosts: 'Host',
             apps: 'Aplicativo',
@@ -1332,6 +1389,7 @@ const message = {
         existFileTitle: 'Aviso de arquivo com o mesmo nome',
         existFileHelper: 'O arquivo enviado contém um arquivo com o mesmo nome. Deseja substituí-lo?',
         existFileSize: 'Tamanho do arquivo (novo -> antigo)',
+        existFileDirHelper: 'O arquivo/pasta selecionado tem um nome duplicado. Por favor, prossiga com cautela!',
     },
     ssh: {
         setting: 'configuração',
@@ -1438,8 +1496,10 @@ const message = {
         proxyDockerHelper:
             'Sincronize a configuração do servidor proxy com o Docker, suportando operações de puxar imagens de servidor offline e outras',
         apiInterface: 'Habilitar API',
-        apiInterfaceClose: 'Uma vez fechado, as interfaces da API não poderão ser acessadas. Deseja continuar?',
-        apiInterfaceHelper: 'Permitir que aplicativos de terceiros acessem a API.',
+        apiInterfaceClose:
+            'As interfaces de API estão indisponíveis, a funcionalidade do aplicativo será restrita. Deseja continuar?',
+        apiInterfaceHelper:
+            'Suporta acesso à interface de API do painel (essa funcionalidade precisa ser ativada no aplicativo do painel)',
         apiInterfaceAlert1:
             'Não habilite em ambientes de produção, pois pode aumentar os riscos de segurança do servidor.',
         apiInterfaceAlert2:
@@ -1759,16 +1819,16 @@ const message = {
         levelUpPro: 'Upgrade para Pro',
         licenseSync: 'Sincronização de Licença',
         knowMorePro: 'Saiba mais',
-        closeAlert: 'A página atual pode ser fechada nas configurações do painel',
+        closeAlert: 'A página atual pode ser oculta nas configurações do painel',
         introduce: 'Introdução de recursos',
         waf: 'O upgrade para a versão profissional pode fornecer recursos como mapa de intercepção, logs, registros de bloqueio, bloqueio por localização geográfica, regras personalizadas, páginas de intercepção personalizadas, etc.',
         tamper: 'O upgrade para a versão profissional pode proteger sites contra modificações ou adulterações não autorizadas.',
-        gpu: 'O upgrade para a versão profissional pode ajudar os usuários a monitorar visualmente parâmetros importantes da GPU, como carga de trabalho, temperatura e uso de memória em tempo real.',
         setting:
             'O upgrade para a versão profissional permite a personalização do logo do painel, mensagem de boas-vindas e outras informações.',
         monitor:
             'Upgrade para a versão profissional para visualizar o status em tempo real do site, tendências de visitantes, fontes de visitantes, logs de solicitações e outras informações.',
         alert: 'Upgrade para a versão profissional para receber informações de alarme via SMS e visualizar logs de alarmes, controlar completamente vários eventos chave e garantir a operação sem preocupações do sistema',
+        app: 'Atualize para a versão profissional para gerenciar servidores e visualizar recursos de monitoramento via o aplicativo móvel.',
     },
     clean: {
         scan: 'Iniciar escaneamento',
@@ -1941,6 +2001,9 @@ const message = {
             'O lado esquerdo é a versão antiga, o lado direito é a nova versão. Após editar, clique para salvar a versão personalizada',
         pullImage: 'Puxar Imagem',
         pullImageHelper: 'Execute o comando docker pull para puxar a imagem antes de iniciar o aplicativo',
+        gpuConfig: 'Aceleração de GPU',
+        gpuConfigHelper:
+            'Por favor, certifique-se de que o servidor tenha os drivers NVIDIA e o NVIDIA Container Toolkit instalados',
     },
     website: {
         website: 'Website | Websites',
@@ -2549,6 +2612,17 @@ const message = {
         cronJobHelper: 'Dispara alerta via SMS ao falhar na execução de tarefas',
         licenseHelper: 'A versão profissional suporta alertas via SMS',
         alertCountHelper: 'Frequência máxima diária de alertas',
+        proxyHelper5:
+            'Após ativar, você pode desabilitar o acesso externo à porta na Loja de Aplicativos - Instalados - Ollama - Parâmetros para melhorar a segurança.',
+    },
+    aitool: {
+        proxy: 'Melhoria de Proxy AI',
+        proxyHelper1: 'Vincule o domínio e habilite o HTTPS para aumentar a segurança na transmissão',
+        proxyHelper2: 'Limite o acesso por IP para evitar exposição na internet pública',
+        proxyHelper3: 'Habilite a transmissão em fluxo',
+        proxyHelper4: 'Após a criação, você pode visualizar e gerenciar no lista de sites',
+        proxyHelper6: 'Para desativar a configuração de proxy, você pode excluí-la da lista de sites.',
+        whiteListHelper: 'Restringir o acesso apenas aos IPs na lista branca',
     },
 };
 

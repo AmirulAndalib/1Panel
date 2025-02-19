@@ -15,6 +15,7 @@ const message = {
         fit2cloud: 'FIT2CLOUD',
         lingxia: 'Lingxia',
         button: {
+            run: 'Jalankan',
             create: 'Cipta',
             add: 'Tambah',
             save: 'Simpan',
@@ -122,6 +123,8 @@ const message = {
         },
         msg: {
             noneData: 'Tiada data tersedia',
+            disConn:
+                'Sila klik butang putus sambungan secara langsung untuk menamatkan sambungan terminal, mengelakkan penggunaan arahan keluar seperti {0}.',
             delete: 'Operasi ini tidak boleh diundur. Adakah anda mahu meneruskan?',
             clean: 'Operasi ini tidak boleh diundur. Adakah anda mahu meneruskan?',
             deleteTitle: 'Padam',
@@ -230,7 +233,7 @@ const message = {
             paramComplexity:
                 'Ruangan ini tidak boleh bermula atau berakhir dengan aksara khas dan mesti terdiri daripada aksara rumi, nombor, "{0}" dengan panjang 6-128 aksara.',
             paramUrlAndPort: 'Ruangan ini mesti dalam format "http(s)://(nama domain/IP):(port)".',
-            nginxDoc: 'Ruangan ini mesti terdiri daripada aksara rumi, nombor, dan ".".',
+            nginxDoc: 'Ruangan ini mesti terdiri daripada aksara rumi, nombor, _, dan ".".',
             appName:
                 'Menyokong huruf kecil, nombor, -, dan _, panjang 2-30, dan tidak boleh bermula atau berakhir dengan - atau _',
             containerName:
@@ -337,6 +340,7 @@ const message = {
         firewall: 'Firewall',
         ssl: 'Certificate | Certificates',
         database: 'Database | Databases',
+        ai_tools: 'AI',
         container: 'Container | Containers',
         cronjob: 'Cron Job | Cron Jobs',
         host: 'Host | Hosts',
@@ -602,6 +606,57 @@ const message = {
         remoteConnHelper2:
             'Alamat sambungan ini boleh digunakan oleh aplikasi yang berjalan di luar kontena atau aplikasi luaran.',
         localIP: 'IP Tempatan',
+    },
+    ai_tools: {
+        model: {
+            model: 'Model',
+            create: 'Tambah Model',
+            create_helper: 'Tarik "{0}" dari Ollama.com',
+            ollama_doc: 'Anda boleh melawat laman web rasmi Ollama untuk mencari dan menemui lebih banyak model.',
+            container_conn_helper: 'Gunakan alamat ini untuk akses atau sambungan antara kontena',
+            ollama_sync:
+                'Sincronizando o modelo Ollama, encontrou que os seguintes modelos não existem, deseja excluí-los?',
+            from_remote: 'Este modelo não foi baixado via 1Panel, sem logs de pull relacionados.',
+            no_logs: 'Os logs de pull deste modelo foram excluídos e não podem ser visualizados.',
+        },
+        gpu: {
+            gpu: 'Monitor GPU',
+            base: 'Maklumat Asas',
+            gpuHelper: 'Perintah NVIDIA-SMI atau XPU-SMI tidak dikesan pada sistem semasa. Sila periksa dan cuba lagi!',
+            driverVersion: 'Versi Pemacu',
+            cudaVersion: 'Versi CUDA',
+            process: 'Maklumat Proses',
+            type: 'Jenis',
+            typeG: 'Grafik',
+            typeC: 'Pengiraan',
+            typeCG: 'Pengiraan + Grafik',
+            processName: 'Nama Proses',
+            processMemoryUsage: 'Penggunaan Memori',
+            temperatureHelper: 'Suhu GPU yang tinggi boleh menyebabkan pelambatan frekuensi GPU',
+            performanceStateHelper: 'Dari P0 (prestasi maksimum) hingga P12 (prestasi minimum)',
+            busID: 'ID Bas',
+            persistenceMode: 'Mod Ketekalan',
+            enabled: 'Diaktifkan',
+            disabled: 'Dilumpuhkan',
+            persistenceModeHelper:
+                'Mod ketekalan membolehkan respons tugas lebih cepat tetapi meningkatkan penggunaan kuasa sedia.',
+            displayActive: 'Kad Grafik Dimulakan',
+            displayActiveT: 'Ya',
+            displayActiveF: 'Tidak',
+            ecc: 'Teknologi Pemeriksaan dan Pembetulan Ralat',
+            computeMode: 'Mod Pengiraan',
+            default: 'Asal',
+            exclusiveProcess: 'Proses Eksklusif',
+            exclusiveThread: 'Thread Eksklusif',
+            prohibited: 'Dilarang',
+            defaultHelper: 'Asal: Proses boleh dilaksanakan secara serentak',
+            exclusiveProcessHelper:
+                'Proses Eksklusif: Hanya satu konteks CUDA boleh menggunakan GPU, tetapi boleh dikongsi oleh berbilang thread',
+            exclusiveThreadHelper: 'Thread Eksklusif: Hanya satu thread dalam konteks CUDA boleh menggunakan GPU',
+            prohibitedHelper: 'Dilarang: Proses tidak dibenarkan dilaksanakan serentak',
+            migModeHelper: 'Digunakan untuk membuat contoh MIG bagi pengasingan fizikal GPU pada tahap pengguna.',
+            migModeNA: 'Tidak Disokong',
+        },
     },
     container: {
         create: 'Cipta kontena',
@@ -1199,6 +1254,7 @@ const message = {
         resource: 'Sumber',
         operate: 'Operasi',
         detail: {
+            ai: 'AI',
             groups: 'Kumpulan',
             hosts: 'Hos',
             apps: 'Aplikasi',
@@ -1346,6 +1402,7 @@ const message = {
         existFileTitle: 'Amaran fail dengan nama yang sama',
         existFileHelper: 'Fail yang dimuat naik mengandungi fail dengan nama yang sama. Adakah anda mahu menimpanya?',
         existFileSize: 'Saiz fail (baru -> lama)',
+        existFileDirHelper: 'Fail/folder yang dipilih mempunyai nama yang sama. Sila berhati-hati!',
     },
     ssh: {
         setting: 'tetapan',
@@ -1452,8 +1509,8 @@ const message = {
         proxyDockerHelper:
             'Selaraskan konfigurasi pelayan proksi ke Docker, menyokong tarikan imej pelayan luar talian dan operasi lain',
         apiInterface: 'Aktifkan API',
-        apiInterfaceClose: 'Setelah ditutup, antara muka API tidak boleh diakses. Adakah anda mahu meneruskan?',
-        apiInterfaceHelper: 'Benarkan aplikasi pihak ketiga mengakses API.',
+        apiInterfaceClose: 'ntaramuka API tidak tersedia, fungsi aplikasi akan terhad. Adakah anda ingin meneruskan?',
+        apiInterfaceHelper: 'Menyokong akses antara muka API panel (fungsi ini perlu diaktifkan untuk aplikasi panel)',
         apiInterfaceAlert1:
             'Jangan aktifkan dalam persekitaran pengeluaran kerana ia mungkin meningkatkan risiko keselamatan pelayan.',
         apiInterfaceAlert2:
@@ -1773,16 +1830,16 @@ const message = {
         levelUpPro: 'Tingkatkan ke Pro',
         licenseSync: 'Penyegerakan Lesen',
         knowMorePro: 'Ketahui Lebih Lanjut',
-        closeAlert: 'Halaman semasa boleh ditutup dalam tetapan panel',
+        closeAlert: 'Halaman semasa boleh disembunyikan dalam tetapan panel',
         introduce: 'Pengenalan Ciri',
         waf: 'Menaik taraf ke versi profesional boleh menyediakan ciri seperti peta pencegahan, log, rekod blok, sekatan lokasi geografi, peraturan tersuai, halaman pencegahan tersuai, dan sebagainya.',
         tamper: 'Menaik taraf ke versi profesional boleh melindungi laman web daripada pengubahsuaian atau manipulasi tanpa kebenaran.',
-        gpu: 'Menaik taraf ke versi profesional boleh membantu pengguna memantau parameter penting GPU secara visual seperti beban kerja, suhu, penggunaan memori secara masa nyata.',
         setting:
             'Menaik taraf ke versi profesional membolehkan penyesuaian logo panel, mesej selamat datang, dan maklumat lain.',
         monitor:
             'Tingkatkan ke versi profesional untuk melihat status masa nyata laman web, tren pelawat, sumber pelawat, log permintaan dan maklumat lain.',
         alert: 'Tingkatkan ke versi profesional untuk menerima maklumat amaran melalui SMS dan melihat log amaran, mengawal sepenuhnya pelbagai acara utama, dan memastikan operasi sistem bebas kerisauan.',
+        app: 'Tingkatkan ke versi profesional untuk menguruskan pelayan dan melihat ciri pemantauan melalui aplikasi mudah alih.',
     },
     clean: {
         scan: 'Mulakan imbasan',
@@ -1951,6 +2008,8 @@ const message = {
         diffHelper: 'Bahagian kiri ialah versi lama, kanan ialah versi baru.',
         pullImage: 'Tarik Imej',
         pullImageHelper: 'Laksanakan docker pull untuk menarik imej sebelum aplikasi dimulakan.',
+        gpuConfig: 'Pecutan GPU',
+        gpuConfigHelper: 'Sila pastikan bahawa pelayan telah dipasang pemacu NVIDIA dan NVIDIA Container Toolkit',
     },
     website: {
         website: 'Laman Web | Laman Web',
@@ -2556,6 +2615,17 @@ const message = {
         cronJobHelper: 'Hantar amaran SMS apabila pelaksanaan tugas gagal',
         licenseHelper: 'Versi profesional menyokong amaran SMS',
         alertCountHelper: 'Kekerapan maksimum amaran harian',
+    },
+    aitool: {
+        proxy: 'Peningkatan Proksi AI',
+        proxyHelper1: 'Ikatkan domain dan aktifkan HTTPS untuk meningkatkan keselamatan penghantaran',
+        proxyHelper2: 'Hadkan akses IP untuk mengelakkan pendedahan di internet awam',
+        proxyHelper3: 'Aktifkan penstriman',
+        proxyHelper4: 'Setelah selesai, anda boleh melihat dan mengurusnya dalam senarai laman web',
+        proxyHelper5:
+            'Selepas diaktifkan, anda boleh melumpuhkan akses luaran ke port dalam App Store - Dipasang - Ollama - Parameter untuk meningkatkan keselamatan.',
+        proxyHelper6: 'Untuk melumpuhkan konfigurasi proksi, anda boleh memadamnya dari senarai laman web.',
+        whiteListHelper: 'Hadkan akses kepada hanya IP dalam senarai putih',
     },
 };
 

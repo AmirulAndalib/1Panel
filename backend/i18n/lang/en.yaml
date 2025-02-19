@@ -284,3 +284,11 @@ UserInfoPassHelp: "Tip: To change the password, you can execute the command: "
 DBConnErr: "Error: Failed to initialize database connection, {{ .err }}"
 SystemVersion: "version: "
 SystemMode: "mode: "
+
+#ai-tool
+ErrOpenrestyInstall: 'Please install Openresty first'
+
+#mobile app
+ErrVerifyToken: 'Token verification error, please reset and scan again.'
+ErrInvalidToken: 'Invalid token, please reset and scan again.'
+ErrExpiredToken: 'Token has expired, please reset and scan again.'

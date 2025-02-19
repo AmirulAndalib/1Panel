@@ -284,3 +284,11 @@ UserInfoPassHelp: "提示：修改密码可执行命令："
 DBConnErr: "错误：初始化数据库连接失败，{{ .err }}"
 SystemVersion: "版本："
 SystemMode: "模式："
+
+#ai-tool
+ErrOpenrestyInstall: '请先安装 Openresty'
+
+#mobile app
+ErrVerifyToken: '令牌验证错误，请重置后再次扫码'
+ErrInvalidToken: '无效的令牌，请重置后再次扫码'
+ErrExpiredToken: '令牌过期，请重置后再次扫码'

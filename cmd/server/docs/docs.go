@@ -20,6 +20,398 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/ai/domain/bind": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    },
+                    {
+                        "Timestamp": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "AI"
+                ],
+                "summary": "Bind domain",
+                "parameters": [
+                    {
+                        "description": "request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.OllamaBindDomain"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/ai/domain/get": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    },
+                    {
+                        "Timestamp": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "AI"
+                ],
+                "summary": "Get bind domain",
+                "parameters": [
+                    {
+                        "description": "request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.OllamaBindDomainReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.OllamaBindDomainRes"
+                        }
+                    }
+                }
+            }
+        },
+        "/ai/gpu/load": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    },
+                    {
+                        "Timestamp": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "AI"
+                ],
+                "summary": "Load gpu / xpu info",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/ai/ollama/model": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    },
+                    {
+                        "Timestamp": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "AI"
+                ],
+                "summary": "Create Ollama model",
+                "parameters": [
+                    {
+                        "description": "request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.OllamaModelName"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "x-panel-log": {
+                    "BeforeFunctions": [],
+                    "bodyKeys": [
+                        "name"
+                    ],
+                    "formatEN": "add Ollama model [name]",
+                    "formatZH": "添加 Ollama 模型 [name]",
+                    "paramKeys": []
+                }
+            }
+        },
+        "/ai/ollama/model/close": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    },
+                    {
+                        "Timestamp": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "AI"
+                ],
+                "summary": "Close Ollama model conn",
+                "parameters": [
+                    {
+                        "description": "request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.OllamaModelName"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "x-panel-log": {
+                    "BeforeFunctions": [],
+                    "bodyKeys": [
+                        "name"
+                    ],
+                    "formatEN": "close conn for Ollama model [name]",
+                    "formatZH": "关闭 Ollama 模型连接 [name]",
+                    "paramKeys": []
+                }
+            }
+        },
+        "/ai/ollama/model/del": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    },
+                    {
+                        "Timestamp": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "AI"
+                ],
+                "summary": "Delete Ollama model",
+                "parameters": [
+                    {
+                        "description": "request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.ForceDelete"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "x-panel-log": {
+                    "BeforeFunctions": [
+                        {
+                            "db": "ollama_models",
+                            "input_column": "id",
+                            "input_value": "ids",
+                            "isList": true,
+                            "output_column": "name",
+                            "output_value": "names"
+                        }
+                    ],
+                    "bodyKeys": [
+                        "ids"
+                    ],
+                    "formatEN": "remove Ollama model [names]",
+                    "formatZH": "删除 Ollama 模型 [names]",
+                    "paramKeys": []
+                }
+            }
+        },
+        "/ai/ollama/model/load": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    },
+                    {
+                        "Timestamp": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "AI"
+                ],
+                "summary": "Page Ollama models",
+                "parameters": [
+                    {
+                        "description": "request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.OllamaModelName"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/ai/ollama/model/recreate": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    },
+                    {
+                        "Timestamp": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "AI"
+                ],
+                "summary": "Rereate Ollama model",
+                "parameters": [
+                    {
+                        "description": "request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.OllamaModelName"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "x-panel-log": {
+                    "BeforeFunctions": [],
+                    "bodyKeys": [
+                        "name"
+                    ],
+                    "formatEN": "re-add Ollama model [name]",
+                    "formatZH": "添加 Ollama 模型重试 [name]",
+                    "paramKeys": []
+                }
+            }
+        },
+        "/ai/ollama/model/search": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    },
+                    {
+                        "Timestamp": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "AI"
+                ],
+                "summary": "Page Ollama models",
+                "parameters": [
+                    {
+                        "description": "request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.SearchWithPage"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.PageResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/ai/ollama/model/sync": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    },
+                    {
+                        "Timestamp": []
+                    }
+                ],
+                "tags": [
+                    "AI"
+                ],
+                "summary": "Sync Ollama model list",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/dto.OllamaModelDropList"
+                            }
+                        }
+                    }
+                },
+                "x-panel-log": {
+                    "BeforeFunctions": [],
+                    "bodyKeys": [],
+                    "formatEN": "sync Ollama model list",
+                    "formatZH": "同步 Ollama 模型列表",
+                    "paramKeys": []
+                }
+            }
+        },
         "/apps/checkupdate": {
             "get": {
                 "security": [
@@ -6021,6 +6413,47 @@ const docTemplate = `{
                     "formatEN": "Create dir or file [path]",
                     "formatZH": "创建文件/文件夹 [path]",
                     "paramKeys": []
+                }
+            }
+        },
+        "/files/batch/check": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    },
+                    {
+                        "Timestamp": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "File"
+                ],
+                "summary": "Batch check file exist",
+                "parameters": [
+                    {
+                        "description": "request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.FilePathsCheck"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/response.ExistFileInfo"
+                            }
+                        }
+                    }
                 }
             }
         },
@@ -16759,6 +17192,9 @@ const docTemplate = `{
                 "github": {
                     "type": "string"
                 },
+                "gpuSupport": {
+                    "type": "boolean"
+                },
                 "key": {
                     "type": "string"
                 },
@@ -18929,6 +19365,20 @@ const docTemplate = `{
                 }
             }
         },
+        "dto.ForceDelete": {
+            "type": "object",
+            "properties": {
+                "forceDelete": {
+                    "type": "boolean"
+                },
+                "ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
         "dto.ForwardRuleOperate": {
             "type": "object",
             "properties": {
@@ -19562,6 +20012,9 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "ja": {
+                    "type": "string"
+                },
+                "ko": {
                     "type": "string"
                 },
                 "ms": {
@@ -20216,6 +20669,83 @@ const docTemplate = `{
                 "HttpPer",
                 "ProxyCache"
             ]
+        },
+        "dto.OllamaBindDomain": {
+            "type": "object",
+            "required": [
+                "appInstallID",
+                "domain"
+            ],
+            "properties": {
+                "appInstallID": {
+                    "type": "integer"
+                },
+                "domain": {
+                    "type": "string"
+                },
+                "ipList": {
+                    "type": "string"
+                },
+                "sslID": {
+                    "type": "integer"
+                },
+                "websiteID": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.OllamaBindDomainReq": {
+            "type": "object",
+            "required": [
+                "appInstallID"
+            ],
+            "properties": {
+                "appInstallID": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.OllamaBindDomainRes": {
+            "type": "object",
+            "properties": {
+                "allowIPs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "connUrl": {
+                    "type": "string"
+                },
+                "domain": {
+                    "type": "string"
+                },
+                "sslID": {
+                    "type": "integer"
+                },
+                "websiteID": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.OllamaModelDropList": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.OllamaModelName": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            }
         },
         "dto.OneDriveInfo": {
             "type": "object",
@@ -22010,6 +22540,9 @@ const docTemplate = `{
                 "github": {
                     "type": "string"
                 },
+                "gpuSupport": {
+                    "type": "boolean"
+                },
                 "icon": {
                     "type": "string"
                 },
@@ -22206,32 +22739,6 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "workDir": {
-                    "type": "string"
-                }
-            }
-        },
-        "model.Tag": {
-            "type": "object",
-            "properties": {
-                "createdAt": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "integer"
-                },
-                "key": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "sort": {
-                    "type": "integer"
-                },
-                "translations": {
-                    "type": "string"
-                },
-                "updatedAt": {
                     "type": "string"
                 }
             }
@@ -22535,6 +23042,9 @@ const docTemplate = `{
                 "editCompose": {
                     "type": "boolean"
                 },
+                "gpuConfig": {
+                    "type": "boolean"
+                },
                 "hostMode": {
                     "type": "boolean"
                 },
@@ -22696,6 +23206,9 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "editCompose": {
+                    "type": "boolean"
+                },
+                "gpuConfig": {
                     "type": "boolean"
                 },
                 "hostMode": {
@@ -23046,6 +23559,20 @@ const docTemplate = `{
                 }
             }
         },
+        "request.FilePathsCheck": {
+            "type": "object",
+            "required": [
+                "paths"
+            ],
+            "properties": {
+                "paths": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
         "request.FileReadByLineReq": {
             "type": "object",
             "required": [
@@ -23262,6 +23789,9 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "editCompose": {
+                    "type": "boolean"
+                },
+                "gpuConfig": {
                     "type": "boolean"
                 },
                 "hostMode": {
@@ -24883,6 +25413,9 @@ const docTemplate = `{
                 "editCompose": {
                     "type": "boolean"
                 },
+                "gpuConfig": {
+                    "type": "boolean"
+                },
                 "hostMode": {
                     "type": "boolean"
                 },
@@ -24920,6 +25453,9 @@ const docTemplate = `{
                 },
                 "github": {
                     "type": "string"
+                },
+                "gpuSupport": {
+                    "type": "boolean"
                 },
                 "icon": {
                     "type": "string"
@@ -24966,7 +25502,7 @@ const docTemplate = `{
                 "tags": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/model.Tag"
+                        "$ref": "#/definitions/response.TagDTO"
                     }
                 },
                 "type": {
@@ -25005,6 +25541,9 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "enable": {
+                    "type": "boolean"
+                },
+                "gpuSupport": {
                     "type": "boolean"
                 },
                 "hostMode": {
@@ -25086,6 +25625,9 @@ const docTemplate = `{
             "properties": {
                 "description": {
                     "type": "string"
+                },
+                "gpuSupport": {
+                    "type": "boolean"
                 },
                 "icon": {
                     "type": "string"
@@ -25237,6 +25779,23 @@ const docTemplate = `{
                 "size"
             ],
             "properties": {
+                "size": {
+                    "type": "number"
+                }
+            }
+        },
+        "response.ExistFileInfo": {
+            "type": "object",
+            "properties": {
+                "modTime": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "path": {
+                    "type": "string"
+                },
                 "size": {
                     "type": "number"
                 }
@@ -26162,7 +26721,7 @@ const docTemplate = `{
     },
     "securityDefinitions": {
         "ApiKeyAuth": {
-            "description": "Custom Token Format, Format: md5('1panel' + API-Key + UnixTimestamp).\n` + "`" + `` + "`" + `` + "`" + `\neg:\ncurl -X GET \"http://localhost:4004/api/v1/dashboard/current\" \\\n-H \"1Panel-Token: \u003c1panel_token\u003e\" \\\n-H \"1Panel-Timestamp: \u003ccurrent_unix_timestamp\u003e\"\n` + "`" + `` + "`" + `` + "`" + `\n- ` + "`" + `1Panel-Token` + "`" + ` is the key for the panel API Key.",
+            "description": "- ` + "`" + `1Panel-Token` + "`" + ` is the key for the panel API Key.",
             "type": "apiKey",
             "name": "1Panel-Token",
             "in": "header"

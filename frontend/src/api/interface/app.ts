@@ -14,6 +14,7 @@ export namespace App {
         type: string;
         status: string;
         limit: number;
+        gpuSupport: boolean;
     }
 
     export interface AppDTO extends App {
@@ -46,6 +47,7 @@ export namespace App {
         dockerCompose: string;
         image: string;
         hostMode?: boolean;
+        gpuSupport: boolean;
     }
 
     export interface AppReq extends ReqPage {
@@ -240,6 +242,7 @@ export namespace App {
         allowPort: boolean;
         dockerCompose: string;
         hostMode?: boolean;
+        gpuConfig?: boolean;
     }
 
     export interface IgnoredApp {

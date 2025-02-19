@@ -1,8 +1,7 @@
-<p align="center"><a href="https://1panel.hk"><img src="https://resource.1panel.hk/img/1panel-logo.png" alt="1Panel" width="300" /></a></p>
-<p align="center"><b>Top-Rated Web-based Linux Server Management Tool<br>Best VPS control panel</b></p>
+<p align="center"><a href="https://1panel.pro"><img src="https://resource.1panel.pro/img/1panel-logo.png" alt="1Panel" width="300" /></a></p>
+<p align="center"><b>Top-Rated Web-based Linux Server Management Tool</b><br>Best VPS control panel<br>新一代的 Linux 服务器运维管理面板</p>
 <p align="center">
-  <a href="https://trendshift.io/repositories/2462" target="_blank"><img src="https://trendshift.io/api/badge/repositories/2462" alt="1Panel-dev%2F1Panel | Trendshift" style="width: 180px; height: auto;" /></a>
-  <a href="https://www.producthunt.com/posts/1panel?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-1panel" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=639696&theme=light" alt="1Panel - Top&#0045;Rated&#0032;web&#0045;based&#0032;Linux&#0032;server&#0032;management&#0032;tool | Product Hunt" style="width: 180px; height: auto;" /></a>
+  <a href="https://trendshift.io/repositories/2462" target="_blank"><img src="https://trendshift.io/api/badge/repositories/2462" alt="1Panel-dev%2F1Panel | Trendshift" style="width: 240px; height: auto;" /></a>
 </p>
 <p align="center">
   <a href="https://www.gnu.org/licenses/gpl-3.0.html"><img src="https://shields.io/github/license/1Panel-dev/1Panel?color=%231890FF" alt="License: GPL v3"></a>
@@ -45,16 +44,16 @@
 Execute the script below and follow the prompts to install 1Panel:
 
 ```bash
-curl -sSL https://resource.1panel.hk/quick_start.sh -o quick_start.sh && bash quick_start.sh
+curl -sSL https://resource.1panel.pro/quick_start.sh -o quick_start.sh && bash quick_start.sh
 ```
 
-Please refer to our [documentation](https://docs.1panel.hk/quick_start/) for more details.
+Please refer to our [documentation](https://docs.1panel.pro/quick_start/) for more details.
 
 中国用户请使用这个 [安装脚本](https://1panel.cn/docs/installation/online_installation/)，其应用数量比国际版本更丰富。
 
 ## Screenshot
 
-![UI Display](https://resource.1panel.hk/img/1panel.png)
+![UI Display](https://resource.1panel.pro/img/1panel.png)
 
 ## Star History
 
@@ -62,7 +61,7 @@ Please refer to our [documentation](https://docs.1panel.hk/quick_start/) for mor
 
 ## Pro Edition
 
-Compared to the OSS Edition, 1Panel Pro Edition provides users with a wealth of enhanced features and technical support services. Enhanced features include WAF enhancement, website tamper protection, website monitoring, GPU monitoring, custom logo and theme color, etc. [Click to view the detailed introduction of the Pro Edition](https://1panel.hk/pricing).
+Compared to the OSS Edition, 1Panel Pro Edition provides users with a wealth of enhanced features and technical support services. Enhanced features include WAF enhancement, website tamper protection, website monitoring, GPU monitoring, custom logo and theme color, etc. [Click to view the detailed introduction of the Pro Edition](https://1panel.pro/pricing).
 
 ## Security Information
 

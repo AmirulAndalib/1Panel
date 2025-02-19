@@ -1163,12 +1163,11 @@ func handleLocalApp(appDir string) (app *model.App, err error) {
 	app.Website = appDefine.Website
 	app.Github = appDefine.Github
 	app.Document = appDefine.Document
-
 	if appDefine.ShortDescZh != "" {
-		appDefine.Description.Zh = appDefine.ShortDescZh
+		app.ShortDescZh = appDefine.ShortDescZh
 	}
 	if appDefine.ShortDescEn != "" {
-		appDefine.Description.En = appDefine.ShortDescEn
+		app.ShortDescEn = appDefine.ShortDescEn
 	}
 	desc, _ := json.Marshal(appDefine.Description)
 	app.Description = string(desc)
@@ -1339,9 +1338,10 @@ func handleInstalled(appInstallList []model.AppInstall, updated bool, sync bool)
 			Path:        installed.GetPath(),
 			CreatedAt:   installed.CreatedAt,
 			App: response.AppDetail{
-				Github:   installed.App.Github,
-				Website:  installed.App.Website,
-				Document: installed.App.Document,
+				Github:     installed.App.Github,
+				Website:    installed.App.Website,
+				Document:   installed.App.Document,
+				GpuSupport: installed.App.GpuSupport,
 			},
 		}
 		if updated {
@@ -1500,6 +1500,20 @@ func addDockerComposeCommonParam(composeMap map[string]interface{}, serviceName 
 	deploy["resources"] = resource
 	serviceValue["deploy"] = deploy
 
+	if req.GpuConfig {
+		resource["reservations"] = map[string]interface{}{
+			"devices": []map[string]interface{}{
+				{
+					"driver":       "nvidia",
+					"count":        "all",
+					"capabilities": []string{"gpu"},
+				},
+			},
+		}
+	} else {
+		delete(resource, "reservations")
+	}
+
 	ports, ok := serviceValue["ports"].([]interface{})
 	if ok {
 		for i, port := range ports {
@@ -1596,6 +1610,33 @@ func isHostModel(dockerCompose string) bool {
 		serviceValue := service.(map[string]interface{})
 		if value, ok := serviceValue["network_mode"]; ok && value == "host" {
 			return true
+		}
+	}
+	return false
+}
+
+func isGpuConfig(dockerCompose string) bool {
+	composeMap := make(map[string]interface{})
+	_ = yaml.Unmarshal([]byte(dockerCompose), &composeMap)
+	services, serviceValid := composeMap["services"].(map[string]interface{})
+	if !serviceValid {
+		return false
+	}
+	for _, service := range services {
+		serviceValue := service.(map[string]interface{})
+		deploy := map[string]interface{}{}
+		if de, ok := serviceValue["deploy"]; ok {
+			deploy = de.(map[string]interface{})
+		}
+		resource := map[string]interface{}{}
+		if res, ok := deploy["resources"]; ok {
+			resource = res.(map[string]interface{})
+		}
+		if reservations, ok := resource["reservations"]; ok {
+			reservationsMap := reservations.(map[string]interface{})
+			if _, dOk := reservationsMap["devices"]; dOk {
+				return true
+			}
 		}
 	}
 	return false

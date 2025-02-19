@@ -15,6 +15,7 @@ const message = {
         fit2cloud: 'FIT2CLOUD',
         lingxia: 'Lingxia',
         button: {
+            run: '실행',
             create: '생성',
             add: '추가',
             save: '저장',
@@ -122,6 +123,8 @@ const message = {
         },
         msg: {
             noneData: '데이터가 없습니다',
+            disConn:
+                '종료 명령어인 {0} 등을 사용하지 않고 직접 연결 끊기 버튼을 클릭하여 터미널 연결을 종료해 주십시오.',
             delete: `이 작업은 되돌릴 수 없습니다. 계속하시겠습니까?`,
             clean: `이 작업은 되돌릴 수 없습니다. 계속하시겠습니까?`,
             deleteTitle: '삭제',
@@ -224,7 +227,7 @@ const message = {
             paramComplexity:
                 '이 필드는 특수 문자로 시작하거나 끝날 수 없으며, 영어, 숫자, "{0}" 문자로 구성되어야 하며 길이는 6-128 자여야 합니다.',
             paramUrlAndPort: '이 필드는 "http(s)://(도메인 이름/IP):(포트)" 형식이어야 합니다.',
-            nginxDoc: '이 필드는 영어, 숫자 및 "." 문자로 구성되어야 합니다.',
+            nginxDoc: '이 필드는 영어, 숫자 및 _ "." 문자로 구성되어야 합니다.',
             appName:
                 '소문자, 숫자, "-", "_"를 지원하며 길이는 2-30 자이고, "-" 또는 "_"로 시작하거나 끝날 수 없습니다.',
             containerName:
@@ -331,6 +334,7 @@ const message = {
         firewall: '방화벽',
         ssl: '인증서 | 인증서들',
         database: '데이터베이스 | 데이터베이스들',
+        ai_tools: 'AI',
         container: '컨테이너 | 컨테이너들',
         cronjob: '크론 작업 | 크론 작업들',
         host: '호스트 | 호스트들',
@@ -587,6 +591,55 @@ const message = {
         remoteConnHelper2:
             '이 연결 주소는 컨테이너 외부 또는 외부 애플리케이션에서 실행 중인 애플리케이션에서 사용할 수 있습니다.',
         localIP: '로컬 IP',
+    },
+    ai_tools: {
+        model: {
+            model: '모델',
+            create: '모델 추가',
+            create_helper: 'Ollama.com에서 "{0}" 가져오기',
+            ollama_doc: 'Ollama 공식 웹사이트를 방문하여 더 많은 모델을 검색하고 찾을 수 있습니다.',
+            container_conn_helper: '컨테이너 간 접근 또는 연결에 이 주소를 사용',
+            ollama_sync: 'Ollama 모델 동기화 중 다음 모델이 존재하지 않음을 발견했습니다. 삭제하시겠습니까?',
+            from_remote: '이 모델은 1Panel을 통해 다운로드되지 않았으며 관련 풀 로그가 없습니다.',
+            no_logs: '이 모델의 풀 로그가 삭제되어 관련 로그를 볼 수 없습니다.',
+        },
+        gpu: {
+            gpu: 'GPU 모니터',
+            base: '기본 정보',
+            gpuHelper: '현재 시스템에서 NVIDIA-SMI 또는 XPU-SMI 명령이 감지되지 않았습니다. 확인 후 다시 시도하세요!',
+            driverVersion: '드라이버 버전',
+            cudaVersion: 'CUDA 버전',
+            process: '프로세스 정보',
+            type: '유형',
+            typeG: '그래픽',
+            typeC: '연산',
+            typeCG: '연산 + 그래픽',
+            processName: '프로세스 이름',
+            processMemoryUsage: '메모리 사용량',
+            temperatureHelper: 'GPU 온도가 높으면 GPU 주파수 제한이 발생할 수 있습니다.',
+            performanceStateHelper: 'P0(최대 성능)부터 P12(최소 성능)까지',
+            busID: '버스 ID',
+            persistenceMode: '지속 모드',
+            enabled: '활성화됨',
+            disabled: '비활성화됨',
+            persistenceModeHelper: '지속 모드는 작업 응답 속도를 빠르게 하지만 대기 전력 소비를 증가시킵니다.',
+            displayActive: '그래픽 카드 초기화됨',
+            displayActiveT: '예',
+            displayActiveF: '아니요',
+            ecc: '오류 감지 및 수정 기술',
+            computeMode: '연산 모드',
+            default: '기본값',
+            exclusiveProcess: '단독 프로세스',
+            exclusiveThread: '단독 스레드',
+            prohibited: '금지됨',
+            defaultHelper: '기본값: 프로세스가 동시에 실행될 수 있음',
+            exclusiveProcessHelper:
+                '단독 프로세스: 하나의 CUDA 컨텍스트만 GPU 를 사용할 수 있지만, 여러 스레드에서 공유 가능',
+            exclusiveThreadHelper: '단독 스레드: CUDA 컨텍스트의 하나의 스레드만 GPU 를 사용할 수 있음',
+            prohibitedHelper: '금지됨: 프로세스가 동시에 실행되는 것이 허용되지 않음',
+            migModeHelper: '사용자 수준에서 GPU 를 물리적으로 분리하는 MIG 인스턴스를 생성하는 데 사용됩니다.',
+            migModeNA: '지원되지 않음',
+        },
     },
     container: {
         create: '컨테이너 만들기',
@@ -1146,6 +1199,7 @@ const message = {
         resource: '자원',
         operate: '작업',
         detail: {
+            ai: 'AI',
             groups: '그룹',
             hosts: '호스트',
             apps: '애플리케이션',
@@ -1291,6 +1345,7 @@ const message = {
         existFileTitle: '동일한 이름의 파일 경고',
         existFileHelper: '업로드한 파일에 동일한 이름의 파일이 포함되어 있습니다. 덮어쓰시겠습니까?',
         existFileSize: '파일 크기 (새로운 -> 오래된)',
+        existFileDirHelper: '선택한 파일/폴더에 동일한 이름이 이미 존재합니다. 신중하게 작업하세요!',
     },
     ssh: {
         setting: '설정',
@@ -1393,10 +1448,10 @@ const message = {
         proxyDockerHelper:
             '프록시 서버 구성을 Docker 에 동기화하여 오프라인 서버 이미지 가져오기 등의 작업을 지원합니다.',
         apiInterface: 'API 활성화',
-        apiInterfaceClose: '비활성화하면 API 인터페이스에 접근할 수 없습니다. 계속하시겠습니까?',
-        apiInterfaceHelper: '서드파티 애플리케이션이 API 에 접근할 수 있도록 허용합니다.',
+        apiInterfaceClose: 'API 인터페이스를 사용할 수 없습니다. 앱 기능이 제한됩니다. 계속하시겠습니까?',
+        apiInterfaceHelper: '패널 API 인터페이스 액세스를 지원합니다(패널 앱에서 이 기능을 활성화해야 합니다)',
         apiInterfaceAlert1: '운영 환경에서는 활성화하지 마십시오. 서버 보안 위험이 증가할 수 있습니다.',
-        apiInterfaceAlert2: '잠재적인 보안 위협을 방지하기 위해 서드파티 애플리케이션으로 API를 호출하지 마십시오.',
+        apiInterfaceAlert2: '잠재적인 보안 위협을 방지하기 위해 서드파티 애플리케이션으로 API 를 호출하지 마십시오.',
         apiInterfaceAlert3: 'API 문서',
         apiInterfaceAlert4: '사용 설명서',
         apiKey: 'API 키',
@@ -1690,15 +1745,15 @@ const message = {
         levelUpPro: 'Pro 로 업그레이드',
         licenseSync: '라이센스 동기화',
         knowMorePro: '더 알아보기',
-        closeAlert: '현재 페이지는 패널 설정에서 닫을 수 있습니다.',
+        closeAlert: '현재 페이지는 패널 설정에서 숨길 수 있습니다',
         introduce: '기능 소개',
         waf: '전문 버전으로 업그레이드하면 차단 맵, 로그, 차단 기록, 지리적 위치 차단, 사용자 정의 규칙, 사용자 정의 차단 페이지 등의 기능을 제공받을 수 있습니다.',
         tamper: '전문 버전으로 업그레이드하면 웹사이트를 무단 수정이나 변조로부터 보호할 수 있습니다.',
-        gpu: '전문 버전으로 업그레이드하면 GPU 의 작업 부하, 온도, 메모리 사용량 등 중요한 매개변수를 실시간으로 시각적으로 모니터링할 수 있습니다.',
         setting: '전문 버전으로 업그레이드하면 패널 로고, 환영 메시지 등 정보를 사용자 정의할 수 있습니다.',
         monitor:
             '전문 버전으로 업그레이드하면 웹사이트의 실시간 상태, 방문자 트렌드, 방문자 출처, 요청 로그 등 정보를 확인할 수 있습니다.',
         alert: '전문 버전으로 업그레이드하면 SMS 를 통해 알림 정보를 받고 알림 로그를 볼 수 있으며, 다양한 주요 이벤트를 완벽하게 제어하여 시스템 운영을 걱정 없이 유지할 수 있습니다.',
+        app: '전문 버전으로 업그레이드하면 모바일 앱을 통해 서버를 관리하고 모니터링 기능을 확인할 수 있습니다.',
     },
     clean: {
         scan: '스캔 시작',
@@ -1869,6 +1924,8 @@ const message = {
         diffHelper: '왼쪽은 이전 버전, 오른쪽은 새 버전입니다. 편집 후 사용자 정의 버전을 저장하려면 클릭하세요.',
         pullImage: '이미지 풀',
         pullImageHelper: '애플리케이션 시작 전에 docker pull 을 실행하여 이미지를 다운로드하세요.',
+        gpuConfig: 'GPU 가속',
+        gpuConfigHelper: '서버에 NVIDIA 드라이버와 NVIDIA Container Toolkit이 설치되어 있는지 확인하십시오',
     },
     website: {
         website: '웹사이트 | 웹사이트들',
@@ -2459,6 +2516,17 @@ const message = {
         cronJobHelper: '작업 실행 실패 시 SMS 알림 트리거',
         licenseHelper: '전문 버전에서는 SMS 알림을 지원합니다.',
         alertCountHelper: '최대 일일 알림 빈도',
+    },
+    aitool: {
+        proxy: 'AI 프록시 강화',
+        proxyHelper1: '도메인을 바인딩하고 HTTPS를 활성화하여 전송 보안을 강화',
+        proxyHelper2: 'IP 접근을 제한하여 공용 인터넷에서의 노출을 방지',
+        proxyHelper3: '스트리밍을 활성화',
+        proxyHelper4: '생성 후, 웹사이트 목록에서 이를 보고 관리할 수 있습니다',
+        proxyHelper5:
+            '활성화한 후, 앱 스토어 - 설치됨 - Ollama - 매개변수에서 포트 외부 접근을 비활성화하여 보안을 강화할 수 있습니다.',
+        proxyHelper6: '프록시 구성을 비활성화하려면 웹사이트 목록에서 삭제할 수 있습니다.',
+        whiteListHelper: '화이트리스트에 있는 IP만 접근 허용',
     },
 };
 
